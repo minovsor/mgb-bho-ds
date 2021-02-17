@@ -4,7 +4,7 @@
 
 conda create --no-default-packages -n mgbbho python=3
 
-conda install matplotlib numpy pandas geopandas fiona
+conda install matplotlib numpy pandas geopandas fiona openpyxl
 
 # Usage
 todo
