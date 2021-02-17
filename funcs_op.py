@@ -154,6 +154,7 @@ def make_tble_t0(df_tble_mini, df_tble_bho, file_bho_inter):
 
     # drop geometry and adjust header for 'mini'
     #df_pts = gdf_pts.drop('geometry',axis=1)
+    df_pts = gdf_pts
     df_pts = df_pts.rename(columns = {'index_right':'mini'})
 
     # merge with mini
