@@ -1,5 +1,7 @@
 # MGB-BHO-DownScaling
 
+Em desenvolvimento
+
 # Installation with conda
 
 conda create --no-default-packages -n mgbbho python=3
