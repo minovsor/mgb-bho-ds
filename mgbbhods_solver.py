@@ -66,7 +66,7 @@ file_qcel_npy = file_qcel.strip('.MGB') + '.npy'
 
 
 # list of time intervals
-#list_t = list(range(nt))   #all time steps
+list_t = list(range(nt))   #all time steps
 ihotstart = 730             #hotstart
 list_t = list_t[ihotstart:]
 
