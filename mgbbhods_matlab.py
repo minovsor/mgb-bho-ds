@@ -25,15 +25,24 @@ Read 'table_t0.xlsx' and Save 'table_t1_py.xlsx'
 
 """
 
+# standard python
 import sys
+
+# plotting, numpy, dataframes and spatial
 import numpy as np
 import pandas as pd
 import geopandas as gpd
 import numexpr
 
+# downscaling functions
 import funcs_io
 import funcs_matlab
 
+
+
+print("-------------------------------------------------------")
+print(" 'Matlab' Pre-processing for the MGB-BHO Downscaling   ")
+print("-------------------------------------------------------")
 
 
 #-----------------------------------------------------------------------------

@@ -44,7 +44,7 @@ import funcs_op
 
 
 print("---------------------------------------------------")
-print(" Pre-processing for MGB-BHO Downscaling            ")
+print(" Main Pre-processing for the MGB-BHO Downscaling   ")
 print("---------------------------------------------------")
 
 

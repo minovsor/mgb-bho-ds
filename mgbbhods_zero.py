@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Initial "Zero" step of the Downscaling Pre-processing
+Initial ("Zero") step of the MGB-BHO Downscaling
+    Gets Domain Intersection
 
-Saves 'table_t0.xlsx'   (inpolygon BHO points with MGB polygons)
+Save domain related files: 
+ - bho_midpts.gpkg        :: BHO midpoints from intersection
+ - table_t0.xlsx          :: inpolygon BHO points with MGB polygons
+ - dict_bho_domain.pickle ::  dictioary of {cotrecho:mini} 
 
 @author: Mino Sorribas
 
@@ -13,6 +17,7 @@ Saves 'table_t0.xlsx'   (inpolygon BHO points with MGB polygons)
 import time
 import pickle
 from datetime import datetime,timedelta
+import warnings
 
 # plotting, numpy, dataframes and spatial
 import matplotlib.pyplot as plt
@@ -20,10 +25,17 @@ import numpy as np
 import pandas as pd
 import geopandas as gpd
 
-# downscaling
+# downscaling functions
 import funcs_io
 import funcs_op
 
+# ignore warnings
+warnings.filterwarnings('ignore')
+
+
+print("--------------------------------------------------------------------")
+print(" Initial Step of the MGB-BHO Downscaling - Gets Domain Intersection ")
+print("--------------------------------------------------------------------")
 
 
 #-----------------------------------------------------------------------------
@@ -96,4 +108,4 @@ df_tble_bho = gdf_tble_bho
 print(" Make intersection table (adjusted for table 1 processing)... ")
 df_bho_inter = funcs_op.make_tble_t0(df_tble_mini, df_tble_bho, FILE_BHO_INTER)
 
-
+print(" Done... ")
