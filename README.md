@@ -8,7 +8,7 @@ conda config --add channels conda-forge
 
 conda config --set channel_priority strict
 
-conda install matplotlib numpy pandas geopandas fiona openpyxl
+conda install matplotlib numpy pandas geopandas fiona openpyxl numexpr
 
 # Usage
 mgbbhods_zero.py
