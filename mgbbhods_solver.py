@@ -70,12 +70,14 @@ list_t = list(range(nt))   #all time steps
 ihotstart = 730             #hotstart
 list_t = list_t[ihotstart:]
 
+# export time series 
+flags_export_ts = [1,2] # select drainage type to dump to xlsx
 
 
 #-----------------------------------------------------------------------------
 # Dump binaries to numpy
 #-----------------------------------------------------------------------------
-flag_build_npy = False
+flag_build_npy = True
 if flag_build_npy:
     # build qtudo .npy
     filebin = PATH_INPUT + file_qtudo
@@ -175,6 +177,8 @@ flag_ts = False
 '''
 
 
+
+
 #--------------------------------------------------------------------------
 # Main loop block for downscaling
 #--------------------------------------------------------------------------
@@ -211,7 +215,6 @@ for c in list_to_downscale:
     # get downscaling function
     func = dict_tipo_fsolver.get(tipo)
 
-
     # data mmap (pre-mapped)
     mmapfile = dict_tipo_mmapfile.get(tipo)
 
@@ -227,6 +230,12 @@ for c in list_to_downscale:
     df_qts = pd.DataFrame(func(c,d_params,df_flow),index = df_flow.index) #ts downscale!
     q95_ts = df_qts.quantile(0.05).values[0] # calculate stats from ts
     qmlt_ts = df_qts.mean().values[0]        # calculate stats from ts
+    
+    #export time-series
+    if tipo in flags_export_ts:
+        file_ts = "./timeseries/mgbbhods_cotrecho_{}.xlsx".format(c)
+        print(" - saving {} to xlsx".format(c) )
+        df_qts.to_excel(file_ts)
 
 
     # method ii - downscale via stats (q95,qmlt)
@@ -241,10 +250,8 @@ for c in list_to_downscale:
     df_annual_q95 = df_qts.groupby(df_qts.index.year).quantile(0.05)
     df_annual_qmlt = df_qts.groupby(df_qts.index.year).mean()
 
-    df_annual_qmlt
 
-
-   # store results
+    # store results (m3/s)
     D_Q95[c] = round(q95,6)
     D_QMLT[c] = round(qmlt,6)
 
