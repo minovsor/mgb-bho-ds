@@ -799,7 +799,7 @@ def define_parameters_t2(dict_bho_mini_t2,
     Defines parameters for type 2 features
 
     Args:
-        dict_bho_mini_t2 (dict) :: mapping between BHO and MGB for type 3
+        dict_bho_mini_t2 (dict) :: mapping between BHO and MGB for type 2
                                   cotrecho as key, mini as value
                                   e.g. {cotrecho:mini,...}
 
@@ -825,13 +825,15 @@ def define_parameters_t2(dict_bho_mini_t2,
             'cotrecho':[c],                  # codigo cotrecho -> para busca
             'mini_ref':[mini],                 # mini referencia
             'fracao_area':[interno_acum[c]] ,    # % area acumulada local (bho)
-            'mini_mon':[interno_minimon[c]],     # minibacias afluentes
+            'mini_mon':[interno_minimon[c]],     # minibacias afluentes ao trecho
             }
 
     Notes:
          - returns dictionary, as it facilitate use in python
          - stores values in list, so it can be serializable in json
          - repeats 'cotrecho', so it is easier to serialize parameters.
+
+    #TODO: INCLUIR MINI AFLUENTE
 
    """
 
@@ -851,7 +853,7 @@ def define_parameters_t2(dict_bho_mini_t2,
         conta = conta+1
         print("  extracting type 2 parameters: {}%".format(round(hh*conta,2)))
 
-        # initialize dicts to map positions relative to
+        # initialize dicts to map relative positions
         #  - such as for each inner cotrecho (key)
         #    a) makes a list of "catchments upstream of cotrecho"
         #    b) makes a list of "inlet cotrechos upstream of cotrecho"
@@ -886,6 +888,12 @@ def define_parameters_t2(dict_bho_mini_t2,
                 d_interno_minimon[c].append(miniafl)  #include tag "upstream mini"
                 d_interno_afl[c].append(codafl)       #include tag "upstream codafl"
 
+        
+        # store list of all mini upstream of current mini
+        list_minimonall = []
+        for minilist in d_interno_minimon:
+            list_minimonall = list_minimonall.extend(minilist)
+        list_minimonall = list(set(list_minimonall))
 
         # we tagged the relative position for each cotrecho
         # so we know which cotrecho is downstream of upstream mini/codafl
@@ -913,7 +921,7 @@ def define_parameters_t2(dict_bho_mini_t2,
                     print('erro ao buscar area drenagem')
                 interno_acum[c] = interno_acum[c] - amont   #km2
 
-        #... now we have the "local cumulative drainage area"
+        #... now we have the "local total drainage area"
 
         # (3) scale by the local area
         acum_scale = sum(interno_acum.values())
@@ -941,7 +949,8 @@ def define_parameters_t2(dict_bho_mini_t2,
                 'miniref': [mini],                       # mini of reference
                 'nuareamont': atot.tolist(),             # drainage area
                 'fracarea': interno_acum[c].tolist(),    # % of total local area (bho)
-                'minimon': d_interno_minimon[c],         # list of upstream neighbour catchments (mini)
+                'minimon': d_interno_minimon[c],         # list of upstream neighbour catchments (mini) relative to bho
+                'minimonall': list_minimon,              # list of all upstream neigh catchments of miniref
                 }
 
     return dict_bho_parameters_t2
