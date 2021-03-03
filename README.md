@@ -31,4 +31,4 @@ python mgbbhods_solver_base.py
 
 ### Extract time series
 ```bash
-python mgbbhods_s
+python mgbbhods_solver_timeseries.py
