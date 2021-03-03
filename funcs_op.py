@@ -318,11 +318,11 @@ def define_parameters_t1(df_tble_t1):
     """
 
     # build dictionary for type 1 association {cotrecho:mini...}
-    tmap = {'bho_cotrecho':int, 'mini':int, 'area_ratio':float}
-    sel_t1 = ['bho_cotrecho', 'mini', 'area_ratio']
+    tmap = {'bho_cotrecho':int, 'mini':int, 'area_ratio':float,'bho_nuareamont':float}
+    sel_t1 = ['bho_cotrecho', 'mini', 'area_ratio','bho_nuareamont']
     df_aux_t1 = df_tble_t1[sel_t1].astype(tmap).set_index('bho_cotrecho')
 
-    ##dict_bho_mini_t1 = df_aux_t1.to_dict()['mini'] #==associate_bho_mini_t1
+    df_aux_t1 = df_aux_t1.rename(columns={'bho_nuareamont':'nuareamont'})
 
 
     # build dictionary with parameters for type 1 {cotrecho: {parameters} ...}
@@ -843,7 +843,7 @@ def define_parameters_t2(dict_bho_mini_t2,
 
     # identify catchments (mini) with type 2 routes
     miniaux = list(dict_bho_mini_t2.values())
-    miniref = set(miniaux)
+    miniref = list(set(miniaux))
 
     # loop each catchment
     hh = 100./float(len(miniref))
@@ -882,18 +882,18 @@ def define_parameters_t2(dict_bho_mini_t2,
             ##codexu_n1 = cotrechos_in_route[-1]              #only outlet (t1)
             ##codigo_ini_ao_fim = [afl] + cotrechos_in_route  #include inlet
             ##codigos_work = cotrechos_in_route[:-1]          #except outlet
-            cotrechos_work = cotrechos_in_route               #whole route
+            cotrechos_work = cotrechos_in_route[:]            #whole route
 
             for c in cotrechos_work:
                 d_interno_minimon[c].append(miniafl)  #include tag "upstream mini"
                 d_interno_afl[c].append(codafl)       #include tag "upstream codafl"
 
-        
+
         # store list of all mini upstream of current mini
-        list_minimonall = []
-        for minilist in d_interno_minimon:
-            list_minimonall = list_minimonall.extend(minilist)
-        list_minimonall = list(set(list_minimonall))
+        list_minimonall = d_interno_minimon.values()
+        list_minimonall = set(list(itertools.chain.from_iterable(list_minimonall)))
+        list_minimonall = list(list_minimonall)
+
 
         # we tagged the relative position for each cotrecho
         # so we know which cotrecho is downstream of upstream mini/codafl
@@ -950,7 +950,7 @@ def define_parameters_t2(dict_bho_mini_t2,
                 'nuareamont': atot.tolist(),             # drainage area
                 'fracarea': interno_acum[c].tolist(),    # % of total local area (bho)
                 'minimon': d_interno_minimon[c],         # list of upstream neighbour catchments (mini) relative to bho
-                'minimonall': list_minimon,              # list of all upstream neigh catchments of miniref
+                'minimonall': list_minimonall,              # list of all upstream neigh catchments of miniref
                 }
 
     return dict_bho_parameters_t2

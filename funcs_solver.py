@@ -307,12 +307,12 @@ def f_downscaling_t2(cotrecho, dict_parameters_t2, df_flow):
 
     # get parameter values
     minijus = param.get('miniref')               # list
-    minimon = param.get('minimon', None)         # list    
+    minimon = param.get('minimon', None)         # list
     fracarea  = param.get('fracarea')[0]         # list -> scalar
     #fracarea  = param['fracarea'][0]             # list -> scalar
-    
+
     #
-    minimonall = param.get('minimonall',None)    # list all 
+    minimonall = param.get('minimonall',None)    # list all
 
     # optional
     #nuareamont = param.get('nuareamont')[0]     # list -> scalar
@@ -322,8 +322,8 @@ def f_downscaling_t2(cotrecho, dict_parameters_t2, df_flow):
     #outflow = df_flow[minijus].sum(axis=1)
     #net = outflow.values - inflows.values
     #outflow_adj = inflows.values + net*fracarea
-    
-    # calculate    
+
+    # calculate
     inflows = df_flow[minimon].sum(axis=1) if minimon else 0. #?! mini upstream of bho
     outflow = df_flow[minijus].sum(axis=1)
     inflows_all = df_flow[minimonall].sum(axis=1) if minimonall else 0.

@@ -101,7 +101,7 @@ def read_matlab_input(file_mini, file_bho_inter):
                 'X':'xp',  #bho coordinate
                 'Y':'yp',  #bho coordinate
                 }
-        df_tble_bho = gpd.read_excel(file_bho_inter)
+        df_tble_bho = pd.read_excel(file_bho_inter)
         df_tble_bho = df_tble_bho.rename(columns = hmap)
 
     #ajusta dtypes

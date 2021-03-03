@@ -176,7 +176,7 @@ def read_tble_t1(file_tble_t1, sheet_name='Data', tol_t1 = True, tol_diffp = Non
 
     """
 
-    try:
+    try: #table from matlab
         # required columns
         header_xls = ['Mini','cotrecho','codigo_otto','AreaM_BHO','AreaM_MGB',
                       'Diff(%)','Lat','Lon','Flag_mini_in']
@@ -200,7 +200,7 @@ def read_tble_t1(file_tble_t1, sheet_name='Data', tol_t1 = True, tol_diffp = Non
         df_tble_t1 = df_tble_t1.rename(columns=header_map)
         print(" -- table 1 from matlab")
 
-    except: #made in python
+    except: #table made in python
         # required columns
         header_xls = ['mini', 'bho_cotrecho', 'codigo_otto', 'bho_nuareamont',
        'mini_areamont', 'diffp_areamont', 'latitude', 'longitude',
