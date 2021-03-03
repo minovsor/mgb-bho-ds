@@ -13,10 +13,16 @@ conda config --set channel_priority strict
 conda install matplotlib numpy pandas geopandas fiona openpyxl
 
 # Usage
-mgbbhods_zero.py
 
-mgbbhods_matlab.py
+# Pre-processing
+mgbbhods_0_prepro.py
 
-mgbbhods_main.py
+mgbbhods_1_matlab.py
 
-mgbbhods_solver.py
+mgbbhods_2_main.py
+
+# Extract stats and geopackage
+mgbbhods_solver_base.py
+
+# Extract time series
+mgbbhods_solver_timeseries.py
