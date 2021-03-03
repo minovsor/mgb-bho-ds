@@ -14,6 +14,8 @@ import funcs_solver
 the_dicts = funcs_io.read_the_dicts()
 
 
+# dict of solver types
+dict_bho_solver = the_dicts['dict_bho_solver']
 
 # dicts of parameters
 dict_parameters_t1 = the_dicts['dict_parameters_t1']
