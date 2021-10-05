@@ -88,6 +88,14 @@ def mgbsa_default(version = '1979'):
         file_qtudo = 'QTUDO_1979.MGB'
         file_qcel  = 'QITUDO_1979.MGB'
 
+   # number of intervals and start date MGB-SA ENKF (1979->)
+    if version == 'enkf_1979':
+        nc = 33749
+        nt = 13149
+        dstart = datetime(1979,1,1)
+        file_qtudo = 'QTUDO_median.MGB'
+        file_qcel  = 'QITUDO_median.MGB'
+
     return (nt, nc, dstart, file_qtudo, file_qcel)
 
 
@@ -327,7 +335,8 @@ def f_downscaling_t2(cotrecho, dict_parameters_t2, df_flow):
     inflows = df_flow[minimon].sum(axis=1) if minimon else 0. #?! mini upstream of bho
     outflow = df_flow[minijus].sum(axis=1)
     inflows_all = df_flow[minimonall].sum(axis=1) if minimonall else 0.
-    net = inflows_all.values - outflow.values
+    #net = inflows_all.values - outflow.values
+    net = outflow.values - inflows_all.values  #fix
     outflow_adj = inflows.values + net*fracarea
 
     # TODO:
@@ -446,7 +455,7 @@ def f_downscaling_t4(cotrecho, dict_parameters_t4, df_flow, inp_qesp=False):
     if t4_mini: #type 4
         outflow = df_flow[t4_mini].values * t4_nuareamont * fc
 
-    else: # "poor man solution"
+    else: # "poor man solution" (like type 3)
         outflow = df_flow[mini].values * nuareamont * fcbg
 
     # check output or time series
