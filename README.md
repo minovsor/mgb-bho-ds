@@ -1,10 +1,10 @@
-# MGB-BHO-DownScaling
+# MGB-BHO-DownScaling (MGB-AS)
 
 Work in progress...
 
-## Download files
+## 1. Download files
 
-## Installation with conda
+## 2. Installation with conda
 
 ```bash
 conda create --no-default-packages -n mgbbho python=3
