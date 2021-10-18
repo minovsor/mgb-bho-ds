@@ -1,6 +1,6 @@
-# MGB-BHO-DownScaling for MGB-South America
+# MGB-BHO-DownScaling for the MGB-South America
 
-Work in progress...
+Guidelines to extract mean discharge and Q95 from MGB-AS simulations to the Base Hidrografica Ottocodificada (BHO 2017 5K)
 
 ## 1. Download files
 
