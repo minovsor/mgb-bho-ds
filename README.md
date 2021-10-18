@@ -9,8 +9,14 @@ Guidelines to extract mean discharge and Q95 from MGB-AS simulations to the ANA'
 - geoft_bho_2017_5k_trecho_drenagem.gpkg (Base Hidrografica Ottocodificada Multiescalas 2017 5k) at https://metadados.snirh.gov.br
 - recommended:  pre-processed files at @... (to skip step 3.3)
 
-## 2. Installation with conda
+## 2. Instalattion
+Use your favorite python 3.7+ environment/IDE.
+```bash
+# required packages
+matplotlib numpy pandas geopandas fiona openpyxl
+```
 
+# (Example) Setting environment with Miniconda/Anaconda
 ```bash
 conda create --no-default-packages -n mgbbho python=3
 conda config --add channels conda-forge
@@ -20,9 +26,9 @@ conda install matplotlib numpy pandas geopandas fiona openpyxl
 
 
 ## 3. Usage
-Use the following commands or use your favorite IDE (e.g. Spyder/Pycharm, check ur environment)
+Use the following commands or use your favorite IDE (e.g. Spyder/Pycharm)
 
-### 3.1 Activate Environment 
+### 3.1 Activate Environment (or your IDE)
 ```bash
 conda activate mgbbho
 ```
