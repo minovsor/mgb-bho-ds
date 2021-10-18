@@ -7,7 +7,7 @@ Guidelines to extract mean discharge and Q95 from MGB-AS simulations to the ANA'
 
 - mgb-bho-ds repository (https://github.com/minovsor/mgb-bho-ds/archive/refs/heads/main.zip)
 - geoft_bho_2017_5k_trecho_drenagem.gpkg (Base Hidrografica Ottocodificada Multiescalas 2017 5k) at https://metadados.snirh.gov.br
-- recommended:  pre-processed files at @... (to skip step 3.3)
+- recommended:  pre-processed files at @... (to skip step 3.2)
 
 ## 2. Setup
 Use your favorite python 3.7+ environment/IDE. I like Spyder!
@@ -33,7 +33,20 @@ Use the following commands or use your favorite IDE (e.g. Spyder/Pycharm)
 conda activate mgbbho
 ```
 
-### 3.2 Check inputs and filepaths in .py, for instance:
+### 3.2 (Advanced) Pre-processing
+Recommended: download optional pre-processed files (MGB-SA -> BHO5k2017 compatible) and skip to 3.3
+```bash
+python mgbbhods_0_prepro.py
+python mgbbhods_1_matlab.py
+python mgbbhods_2_main.py
+```
+
+### 3.3 Extract discharge stats and export geopackage
+```bash
+python mgbbhods_solver_base.py
+```
+
+### (Best practise) Check inputs and filepaths in .py, for instance:
 TODO: describe these in a .txt file
 ```bash
 # main path
@@ -50,23 +63,10 @@ FILE_GDF_BHO = PATH_INPUT + 'geoft_bho_2017_5k_trecho_drenagem.gpkg'
 FILE_MGB_CATCHMENTS_SHP = PATH_INPUT + 'mgb_sa_unit_catchments_sirgas2000.shp'
 ```
 
-### 3.3 (Advanced) Pre-processing
-Recommended: download optional pre-processed files (MGB-SA -> BHO5k2017 compatible) and skip to 3.4
-```bash
-python mgbbhods_0_prepro.py
-python mgbbhods_1_matlab.py
-python mgbbhods_2_main.py
-```
+### (Advanced) Customize defaults for your MGB-AS version:
+ - Update mgb info at mgbsa_default at funcs_solver.py
 
-### 3.4 Extract discharge stats and export geopackage
-```bash
-python mgbbhods_solver_base.py
-```
-
-### 3.X Extract time series (experimental!)
+### (Experimental) Extract time series
 ```bash
 python mgbbhods_solver_timeseries.py
 ```
-
-### (Advanced) Customize defaults for your MGB-AS version:
- - Update mgb info at mgbsa_default at funcs_solver.py
