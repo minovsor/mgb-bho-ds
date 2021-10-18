@@ -28,7 +28,7 @@ conda install matplotlib numpy pandas geopandas fiona openpyxl
 ## 3. Usage
 Use the following commands or use your favorite IDE (e.g. Spyder/Pycharm)
 
-### 3.1 Activate Environment (or your IDE)
+### 3.1 Activate Environment (or use your IDE)
 ```bash
 conda activate mgbbho
 ```
