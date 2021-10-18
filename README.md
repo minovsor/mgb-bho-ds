@@ -49,6 +49,26 @@ python mgbbhods_solver_base.py
 ---
 ### (Advanced) Customize defaults for your MGB-AS version:
  - Update mgb info at mgbsa_default at funcs_solver.py
+```bash
+def mgbsa_default(version = '1979'):
+    """ Default settings for MGB-SA """
+    if version == '1990':
+        nc = 33749
+        nt = 7305
+        dstart = datetime(1990,1,1)
+        file_qtudo = 'QTUDO_1990.MGB'
+        file_qcel  = 'QITUDO_1990.MGB'
+     
+     # customized version
+     if version == 'custom':
+        nc = 33749  #number of mgb catchments
+        nt = 7305   #number of time steps 
+        dstart = datetime(1990,1,1)
+        file_qtudo = 'QTUDO_CUSTOM.MGB'
+        file_qcel  = 'QITUDO_CUSTOM.MGB'
+      ...
+```
+
 
 ### (Experimental) Extract time series
 ```bash
