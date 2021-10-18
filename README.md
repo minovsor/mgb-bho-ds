@@ -27,7 +27,7 @@ conda install matplotlib numpy pandas geopandas fiona openpyxl
 
 
 ## 3. Usage
-Use the following commands or use your favorite IDE (e.g. Spyder/Pycharm)
+Use the following commands or use your favorite IDE (e.g. Spyder)
 
 ### 3.1 Activate Environment (or use your IDE)
 ```bash
