@@ -1,6 +1,7 @@
-# MGB-BHO-DownScaling for the MGB-South America
+# Dowsncaling discharges from MGB-South America to the BHO
 
-Guidelines to extract mean discharge and Q95 from MGB-AS simulations to the ANA's Base Hidrografica Ottocodificada (BHO 2017 5K)
+Guidelines to extract mean discharge and Q95
+ - from MGB-AS simulations to the ANA's Base Hidrografica Ottocodificada (BHO 2017 5K)
 
 ## Required MGB-AS output files
 - discharge binary (e.g. "QTUDO.BIN")
