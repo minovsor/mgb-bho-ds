@@ -9,10 +9,10 @@ Guidelines to extract mean discharge and Q95 from MGB-AS simulations to the ANA'
 - geoft_bho_2017_5k_trecho_drenagem.gpkg (Base Hidrografica Ottocodificada Multiescalas 2017 5k) at https://metadados.snirh.gov.br
 - recommended:  pre-processed files at @... (to skip step 3.3)
 
-## 2. Instalattion
+## 2. Setup
 Use your favorite python 3.7+ environment/IDE.
 ```bash
-# required packages
+# required packages (nothing complicated)
 matplotlib numpy pandas geopandas fiona openpyxl
 ```
 
