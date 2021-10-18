@@ -14,8 +14,7 @@ conda install matplotlib numpy pandas geopandas fiona openpyxl
 ```
 
 ### Check filepaths
-```python
-
+```bash
 # main path
 PATH_MAIN = './'
 PATH_INPUT = PATH_MAIN + 'input/'
@@ -28,7 +27,7 @@ FILE_GDF_BHO = PATH_INPUT + 'geoft_bho_2017_5k_trecho_drenagem.gpkg'
 
 # shapefile MGB
 FILE_MGB_CATCHMENTS_SHP = PATH_INPUT + 'mgb_sa_unit_catchments_sirgas2000.shp'
-```python
+```bash
 
 
 ## Usage
