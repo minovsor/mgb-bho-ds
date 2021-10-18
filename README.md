@@ -1,4 +1,4 @@
-# Dowsncaling simulated discharges from MGB-AS to the BHO20175k
+# Dowsncaling simulated discharges from MGB-AS to the BHO 2017 5K
 
 Current capabilities:
 - calculate mean discharge and Q95
