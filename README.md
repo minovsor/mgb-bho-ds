@@ -48,7 +48,8 @@ python mgbbhods_solver_base.py
 ```
 
 ---
-### (Advanced) Customize defaults for your MGB-AS version:
+### (Advanced) Customize defaults for your MGB-AS version
+Two-steps to adapt the downscaling to a customized MGB-AS version:
  1. Update mgb info at mgbsa_default at funcs_solver.py
 ```bash
 def mgbsa_default(version = '1979'):
