@@ -11,9 +11,9 @@ Current capabilities:
 
 ## 1. Download files
 
-- mgb-bho-ds repository (https://github.com/minovsor/mgb-bho-ds/archive/refs/heads/main.zip)
-- [Base Hidrografica Ottocodificada Multiescalas 2017 5k)](https://metadados.snirh.gov.br/files/f7b1fc91-f5bc-4d0d-9f4f-f4e5061e5d8f/geoft_bho_2017_5k_trecho_drenagem.gpkg)
-- recommended:  pre-processed files at @... (to skip step 3.2)
+- [mgb-bho-ds repository](https://github.com/minovsor/mgb-bho-ds/archive/refs/heads/main.zip)
+- [Base Hidrografica Ottocodificada Multiescalas 2017 5k](https://metadados.snirh.gov.br/files/f7b1fc91-f5bc-4d0d-9f4f-f4e5061e5d8f/geoft_bho_2017_5k_trecho_drenagem.gpkg)
+- [recommended:  pre-processed files at @... (to skip step 3.2)](TODO:link)
 
 ## 2. Setup
 Use your favorite python 3.7+ environment/IDE. I like Spyder!
