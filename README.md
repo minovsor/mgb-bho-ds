@@ -10,13 +10,13 @@ Guidelines to extract mean discharge and Q95 from MGB-AS simulations to the ANA'
 - recommended:  pre-processed files at @... (to skip step 3.3)
 
 ## 2. Setup
-Use your favorite python 3.7+ environment/IDE.
+Use your favorite python 3.7+ environment/IDE. I like Spyder!
 ```bash
-# required packages (nothing complicated)
+Required packages (nothing complicated):
 matplotlib numpy pandas geopandas fiona openpyxl
 ```
 
-## (Example) Setting environment with Miniconda/Anaconda
+(Example) Setting environment with Miniconda/Anaconda
 ```bash
 conda create --no-default-packages -n mgbbho python=3
 conda config --add channels conda-forge
