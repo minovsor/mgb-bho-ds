@@ -48,7 +48,7 @@ python mgbbhods_solver_base.py
 
 ---
 ### (Advanced) Customize defaults for your MGB-AS version:
- - Update mgb info at mgbsa_default at funcs_solver.py
+ 1. Update mgb info at mgbsa_default at funcs_solver.py
 ```bash
 def mgbsa_default(version = '1979'):
     """ Default settings for MGB-SA """
@@ -67,6 +67,12 @@ def mgbsa_default(version = '1979'):
         file_qtudo = 'QTUDO_CUSTOM.MGB'
         file_qcel  = 'QITUDO_CUSTOM.MGB'
       ...
+```
+2. Update argument at mgbbhods_solver_base.py
+```bash
+version = 'custom'
+nt, nc, dstart, file_qtudo, file_qcel = funcs_solver.mgbsa_default(version)
+...
 ```
 
 
