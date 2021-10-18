@@ -78,11 +78,6 @@ nt, nc, dstart, file_qtudo, file_qcel = funcs_solver.mgbsa_default(version)
 ```
 
 
-### (Experimental) Extract time series
-```bash
-python mgbbhods_solver_timeseries.py
-```
-
 ---
 ### (Best practise) Check inputs and filepaths in .py, for instance:
 TODO: describe these in a .txt file
@@ -102,3 +97,8 @@ FILE_MGB_CATCHMENTS_SHP = PATH_INPUT + 'mgb_sa_unit_catchments_sirgas2000.shp'
 ```
 
 
+---
+### (Experimental) Extract time series
+```bash
+python mgbbhods_solver_timeseries.py
+```
