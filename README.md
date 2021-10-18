@@ -11,8 +11,8 @@ Guidelines to extract mean discharge and Q95 from MGB-AS simulations to the ANA'
 
 ## 2. Setup
 Use your favorite python 3.7+ environment/IDE. I like Spyder!
+Required packages:
 ```bash
-Required packages (nothing complicated):
 matplotlib numpy pandas geopandas fiona openpyxl
 ```
 
