@@ -46,6 +46,7 @@ python mgbbhods_2_main.py
 python mgbbhods_solver_base.py
 ```
 
+## Tips/Advances/Others
 ### (Best practise) Check inputs and filepaths in .py, for instance:
 TODO: describe these in a .txt file
 ```bash
