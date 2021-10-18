@@ -45,14 +45,14 @@ FILE_MGB_CATCHMENTS_SHP = PATH_INPUT + 'mgb_sa_unit_catchments_sirgas2000.shp'
 ```
 
 ### 3.3 Pre-processing (Advanced)
-Reccomended: download optional pre-processed files and skip to 3.4
+Recommended: download optional pre-processed files (bho5k2017 compatible) and skip to 3.4
 ```bash
 python mgbbhods_0_prepro.py
 python mgbbhods_1_matlab.py
 python mgbbhods_2_main.py
 ```
 
-### 3.4 Extract stats and geopackage
+### 3.4 Extract discharge stats and export geopackage
 ```bash
 python mgbbhods_solver_base.py
 ```
@@ -60,3 +60,6 @@ python mgbbhods_solver_base.py
 ### 3.X Extract time series (experimental!)
 ```bash
 python mgbbhods_solver_timeseries.py
+
+### (Advanced) Customize defaults for your MGB-AS version:
+ - Update mgb info at mgbsa_default at funcs_solver.py
