@@ -28,7 +28,8 @@ Use the following commands or use your favorite IDE (e.g. Spyder/Pycharm, check 
 conda activate mgbbho
 ```
 
-### 3.2 Check inputs and filepaths
+### 3.2 Check inputs and filepaths in .py, for instance:
+TODO: describe these in a .txt file
 ```bash
 # main path
 PATH_MAIN = './'
@@ -44,8 +45,8 @@ FILE_GDF_BHO = PATH_INPUT + 'geoft_bho_2017_5k_trecho_drenagem.gpkg'
 FILE_MGB_CATCHMENTS_SHP = PATH_INPUT + 'mgb_sa_unit_catchments_sirgas2000.shp'
 ```
 
-### 3.3 Pre-processing (Advanced)
-Recommended: download optional pre-processed files (bho5k2017 compatible) and skip to 3.4
+### 3.3 (Advanced) Pre-processing
+Recommended: download optional pre-processed files (MGB-SA -> BHO5k2017 compatible) and skip to 3.4
 ```bash
 python mgbbhods_0_prepro.py
 python mgbbhods_1_matlab.py
