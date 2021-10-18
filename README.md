@@ -46,7 +46,16 @@ python mgbbhods_2_main.py
 python mgbbhods_solver_base.py
 ```
 
-## Tips/Advances/Others
+---
+### (Advanced) Customize defaults for your MGB-AS version:
+ - Update mgb info at mgbsa_default at funcs_solver.py
+
+### (Experimental) Extract time series
+```bash
+python mgbbhods_solver_timeseries.py
+```
+
+---
 ### (Best practise) Check inputs and filepaths in .py, for instance:
 TODO: describe these in a .txt file
 ```bash
@@ -64,10 +73,4 @@ FILE_GDF_BHO = PATH_INPUT + 'geoft_bho_2017_5k_trecho_drenagem.gpkg'
 FILE_MGB_CATCHMENTS_SHP = PATH_INPUT + 'mgb_sa_unit_catchments_sirgas2000.shp'
 ```
 
-### (Advanced) Customize defaults for your MGB-AS version:
- - Update mgb info at mgbsa_default at funcs_solver.py
 
-### (Experimental) Extract time series
-```bash
-python mgbbhods_solver_timeseries.py
-```
