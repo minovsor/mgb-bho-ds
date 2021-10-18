@@ -14,7 +14,7 @@ conda install matplotlib numpy pandas geopandas fiona openpyxl
 ```
 
 
-##3. Usage
+## 3. Usage
 ### 3.1 Activate Environment (or use your favorite, e.g. Spyder)
 ```bash
 conda activate mgbbho
