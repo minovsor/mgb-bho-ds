@@ -6,11 +6,8 @@ Guidelines to extract mean discharge and Q95 from MGB-AS simulations to the ANA'
 ## 1. Download files
 
 - mgb-bho-ds repository (https://github.com/minovsor/mgb-bho-ds/archive/refs/heads/main.zip)
-- geoft_bho_2017_5k_trecho_drenagem.gpkg at https://metadados.snirh.gov.br
-
-(Base Hidrografica Ottocodificada Multiescalas 2017 5k)
-
-- optional:  pre-processed files at @... (to skip step 3.3)
+- geoft_bho_2017_5k_trecho_drenagem.gpkg (Base Hidrografica Ottocodificada Multiescalas 2017 5k) at https://metadados.snirh.gov.br
+- recommended:  pre-processed files at @... (to skip step 3.3)
 
 ## 2. Installation with conda
 
