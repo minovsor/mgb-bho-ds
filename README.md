@@ -13,10 +13,13 @@ conda config --set channel_priority strict
 conda install matplotlib numpy pandas geopandas fiona openpyxl
 ```
 
-### Check filepaths 
-PATH_MAIN = '../'
-PATH_INPUT = PATH_MAIN + 'input/'
+### Check filepaths
 ```python
+
+# main path
+PATH_MAIN = './'
+PATH_INPUT = PATH_MAIN + 'input/'
+
 # table mgb topology
 FILE_MINI = PATH_INPUT + 'mini.xlsx'
 
