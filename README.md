@@ -1,4 +1,4 @@
-# MGB-BHO-DownScaling (MGB-AS)
+# MGB-BHO-DownScaling for MGB-South America
 
 Work in progress...
 
@@ -13,7 +13,14 @@ conda config --set channel_priority strict
 conda install matplotlib numpy pandas geopandas fiona openpyxl
 ```
 
-### Check filepaths
+
+##3. Usage
+### 3.1 Activate Environment (or use your favorite, e.g. Spyder)
+```bash
+conda activate mgbbho
+```
+
+### Check inputs and filepaths
 ```bash
 # main path
 PATH_MAIN = './'
@@ -29,14 +36,6 @@ FILE_GDF_BHO = PATH_INPUT + 'geoft_bho_2017_5k_trecho_drenagem.gpkg'
 FILE_MGB_CATCHMENTS_SHP = PATH_INPUT + 'mgb_sa_unit_catchments_sirgas2000.shp'
 ```
 
-
-## Usage
-### Activate Environment
-```bash
-conda activate mgbbho
-```
-
-
 ### Pre-processing
 ```bash
 python mgbbhods_0_prepro.py
@@ -49,6 +48,6 @@ python mgbbhods_2_main.py
 python mgbbhods_solver_base.py
 ```
 
-### Extract time series
+### Extract time series (experimental)
 ```bash
 python mgbbhods_solver_timeseries.py
