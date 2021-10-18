@@ -60,6 +60,7 @@ python mgbbhods_solver_base.py
 ### 3.X Extract time series (experimental!)
 ```bash
 python mgbbhods_solver_timeseries.py
+```
 
 ### (Advanced) Customize defaults for your MGB-AS version:
  - Update mgb info at mgbsa_default at funcs_solver.py
