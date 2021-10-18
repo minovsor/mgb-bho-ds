@@ -5,7 +5,7 @@ Guidelines to extract mean discharge and Q95 from MGB-AS simulations to the Base
 
 ## 1. Download files
 
-Download all files
+Download all files to your working directory
 
 ## 2. Installation with conda
 
