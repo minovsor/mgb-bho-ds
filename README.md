@@ -16,7 +16,7 @@ Use your favorite python 3.7+ environment/IDE.
 matplotlib numpy pandas geopandas fiona openpyxl
 ```
 
-# (Example) Setting environment with Miniconda/Anaconda
+## (Example) Setting environment with Miniconda/Anaconda
 ```bash
 conda create --no-default-packages -n mgbbho python=3
 conda config --add channels conda-forge
