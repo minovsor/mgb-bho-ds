@@ -44,7 +44,8 @@ FILE_GDF_BHO = PATH_INPUT + 'geoft_bho_2017_5k_trecho_drenagem.gpkg'
 FILE_MGB_CATCHMENTS_SHP = PATH_INPUT + 'mgb_sa_unit_catchments_sirgas2000.shp'
 ```
 
-### 3.3 Pre-processing (skip to 3.4 if you downloaded)
+### 3.3 Pre-processing (Advanced)
+Reccomended: download optional pre-processed files and skip to 3.4
 ```bash
 python mgbbhods_0_prepro.py
 python mgbbhods_1_matlab.py
