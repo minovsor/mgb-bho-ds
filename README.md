@@ -85,7 +85,7 @@ nt, nc, dstart, file_qtudo, file_qcel = funcs_solver.mgbsa_default(version)
 
 
 ---
-### (Best practise) Do a quick check of inputs and filepaths in .py files, for instance:
+### (Best practice) Do a quick check of inputs and filepaths in .py files, for instance:
 ```bash
 # main path
 PATH_MAIN = './'
