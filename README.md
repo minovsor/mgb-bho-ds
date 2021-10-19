@@ -1,4 +1,4 @@
-# Downscaling simulated discharges from MGB-AS to the BHO 2017 5K
+# Downscaling simulated discharges from the MGB-AS -> BHO 2017 5K
 
 Current capabilities:
 - calculate mean discharge and Q95
