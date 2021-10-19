@@ -1129,7 +1129,8 @@ def define_parameters_t4(group_t4_candidates,
 
         ##if t3_parameters:
         # recover some parameters
-        select_params = ['mini','aream_km2']
+        #select_params = ['mini','aream_km2']
+        select_params = ['mini','area_km2','aream_km2'] #UPDATED (2021/10): actualy uses area_km2
         params_sel = {k:v for k,v in t3_parameters.items() if k in select_params}
 
         # new parameters

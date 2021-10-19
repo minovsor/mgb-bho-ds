@@ -10,9 +10,10 @@ Main script to runs the downscaling of MGB results into BHO drainage
     CAREFUL IT CAN GENERATE LOTS OF GBytes of DATA
 
     -> timeseries ofh 12420 days results in:
-        ~ 400 KB   for each file of daily time-series
-        - 20-30 KB  for each file of monthly timeseries
-        - 2-3 KB   for each file of yearly time-series
+        ~ 400 KB   for each cotrecho/file of daily time-series
+        ~ 20-30 KB for each cotrecho/file of monthly timeseries
+        ~ 2-3 KB   for each cotrecho/file of yearly time-series
+        ~ runtime of ~700 files cotrecho per minute (i7-9750H 4 Ghz ~30% HDD)
 
         -> thus, 460000 cotrecho require:
             ~ 13.8 Gbytes for monthly + yearly timesries
@@ -20,6 +21,7 @@ Main script to runs the downscaling of MGB results into BHO drainage
 
         -> thus, ~56000 cotrechos require:
             ~ 1.7 Gbytes for monthly + yearly timeseries
+
 
 
 
@@ -46,7 +48,7 @@ import funcs_gpkg
 
 
 print("---------------------------------------------------")
-print(" Running MGB-BHO Downscaling                       ")
+print(" Running MGB-BHO Downscaling for Time Series       ")
 print("---------------------------------------------------")
 
 start=time.time()
@@ -62,11 +64,16 @@ PATH_INPUT = PATH_MAIN + 'input/'
 # actually, PATH_INPUT gets .bin files... but processing is local with .npy
 
 
-#dont need this
-#FILE_MINI = PATH_INPUT + 'mini.xlsx'
+#could use for filters
 #FILE_TBLE_BHO = PATH_INPUT + 'tble_bho_info.xlsx'
 
 
+#-----------------------------------------------------------------------------
+# Optional: user-based
+#-----------------------------------------------------------------------------
+# gauge x bho
+with open('dict_posto_cotrecho.pickle','rb') as f:
+    dict_posto_cotrecho = pickle.load(f)
 
 
 #-----------------------------------------------------------------------------
@@ -184,21 +191,32 @@ dict_tipo_mmapfile={
 # Select cotrechos for downscaling (default= all available) and time-series
 #--------------------------------------------------------------------------
 # select all cotrechos to downscale
-if 'list_to_downscale' not in locals():
-    list_to_downscale = available_to_downscale.copy()
+#if 'list_to_downscale' not in locals():
+#    list_to_downscale = available_to_downscale.copy()
+
+list_to_downscale = []  #default for safety.
 
 
-
-#NOTE: THIS IS A HARDCODE FILTER!
-# select only type 1 and 2.
-list_to_downscale = []
+# HARDCODE: select cotrechos of type 1 and 2
+list_from_user = []
 for c,tipo in dict_bho_solver.items():
     if tipo==1 or tipo==2:
-        list_to_downscale.append(c)
+        list_from_user.append(c)
+
+
+#TODO: >1000_km2
+
+
+# HARDCODE: select cotrechos from gauges
+list_from_gauges = list(dict_posto_cotrecho.values()) #could repeat
 
 
 
+# list to downscale timeseries (monthtly and annual)
+list_to_downscale = list( set(list_from_user + list_from_gauges) )
 
+# list to downscale daily timeseries
+list_to_daily_ts = list(set(list_from_gauges[:]))
 
 #--------------------------------------------------------------------------
 # Main loop block for downscaling
@@ -217,11 +235,18 @@ def hydroyear(year,month):
 conta=0
 nconta = len(list_to_downscale)
 hconta = 100./nconta
-ttipo=1 #auxiliary
+
+#debug
+#ttipo=1 #dummy
+
 for c in list_to_downscale:
 
     # get type of solver
     tipo = dict_bho_solver.get(c)     #1,2,3 or 4
+
+    if tipo is None:
+        print(" - can't solve for cotrecho {}. next... ".format(c))
+        continue
 
     #DEBUG:TESTING RESULTS
     #if tipo!=ttipo:
@@ -302,8 +327,8 @@ for c in list_to_downscale:
 
     # --
     # export daily time-series as csv
-    if c in list_to_daily_ts: # bad implementation cause we know a priori.
-        file_ts = "./timeseries/mgbbhods_cotrecho_{}_daily.csv".format(c)
+    if c in list_to_daily_ts: # 'if' is a bad implementation cause we know a priori.
+        file_ts = "./timeseries_daily/mgbbhods_cotrecho_{}_daily.csv".format(c)
         df_qts.to_csv(file_ts,sep=';', float_format='%6.6f')
 
     # --

@@ -39,8 +39,12 @@ print("---------------------------------------------------")
 start=time.time()
 
 suffix = 'flows_1979'
-suffix = 'flows_enkf'
+suffix = 'flows_enkf_rev'
+suffix = 'flows_enkf_m48'
+suffix = 'flows_enkf_m02'
 
+ignore_t3 = True
+ignore_t3 = False
 
 
 #-----------------------------------------------------------------------------
@@ -65,6 +69,8 @@ FILE_GDF_BHO = PATH_INPUT + 'geoft_bho_2017_5k_trecho_drenagem.gpkg'
 #-----------------------------------------------------------------------------
 version = '1979'
 version = 'enkf_1979'
+version = 'enkf_1979_m48'
+version = 'enkf_1979_m02'
 nt, nc, dstart, file_qtudo, file_qcel = funcs_solver.mgbsa_default(version)
 
 file_qtudo_npy = file_qtudo.strip('.MGB') + '.npy'
@@ -73,7 +79,8 @@ file_qcel_npy = file_qcel.strip('.MGB') + '.npy'
 
 # list of time intervals
 list_t = list(range(nt))   #all time steps
-ihotstart = 730             #hotstart
+#ihotstart = 730             #hotstart
+ihotstart = 365             #hotstart
 list_t = list_t[ihotstart:]
 
 # export time series
@@ -91,10 +98,11 @@ if flag_build_npy:
     fileout = file_qtudo_npy
     _ = funcs_solver.dump_mgb_binary_to_npy(filebin, fileout, nt, nc)
 
-    # build qcel .npy
-    filebin = PATH_INPUT + file_qcel
-    fileout = file_qcel_npy
-    _ = funcs_solver.dump_mgb_binary_to_npy(filebin, fileout, nt, nc)
+    if not ignore_t3:
+        # build qcel .npy
+        filebin = PATH_INPUT + file_qcel
+        fileout = file_qcel_npy
+        _ = funcs_solver.dump_mgb_binary_to_npy(filebin, fileout, nt, nc)
 
 
 
@@ -214,6 +222,8 @@ for c in list_to_downscale:
     #DEBUG:TESTING RESULTS
     #if tipo!=ttipo:
     #    continue
+    if (ignore_t3 and tipo==3):
+        continue
 
     # counter
     conta = conta+1
@@ -362,7 +372,7 @@ D = dict(zip(label,kvs))
 
 
 # pass dicts to dataframe and export
-G = funcs_gpkg.f_dicts_to_bho_gpkg(gdf_tble_bho, D, suffix='flows_1979')
+G = funcs_gpkg.f_dicts_to_bho_gpkg(gdf_tble_bho, D, suffix=suffix)
 
 del gdf_tble_bho
 

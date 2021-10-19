@@ -4,6 +4,8 @@ Utility functions for the solver step of the Downscaling
 
 @author: Mino Sorribas
 
+TODO: check type 4 !
+
 """
 
 
@@ -11,6 +13,56 @@ import numpy as np
 import pandas as pd
 from datetime import datetime,timedelta
 import itertools
+
+#-----------------------------------------------------------------------------
+# DEFAULT FILES FOR MGB
+#-----------------------------------------------------------------------------
+def mgbsa_default(version = '1979'):
+    """ Default settings for MGB-SA """
+
+    # number of intervals and start date MGB-SA (1990->)
+    if version == '1990':
+        nc = 33749
+        nt = 7305
+        dstart = datetime(1990,1,1)
+        file_qtudo = 'QTUDO_1990.MGB'
+        file_qcel  = 'QITUDO_1990.MGB'
+
+    # ###
+    # number of intervals and start date MGB-SA (1979->)
+    if version == '1979':
+        nc = 33749
+        nt = 13149
+        dstart = datetime(1979,1,1)
+        file_qtudo = 'QTUDO_1979.MGB'
+        file_qcel  = 'QITUDO_1979.MGB'
+
+   # number of intervals and start date MGB-SA ENKF (1979->) MEMBRO 25
+    if version == 'enkf_1979':
+        nc = 33749
+        nt = 13149
+        dstart = datetime(1979,1,1)
+        file_qtudo = 'QTUDO25.MGB'
+        file_qcel  = 'QITUDO25.MGB'
+
+   # number of intervals and start date MGB-SA ENKF (1979->) MEMBRO 48
+    if version == 'enkf_1979_m48':
+        nc = 33749
+        nt = 13149
+        dstart = datetime(1979,1,1)
+        file_qtudo = 'QTUDO48.MGB'
+        file_qcel  = 'QITUDO48.MGB'
+
+   # number of intervals and start date MGB-SA ENKF (1979->) MEMBRO 2
+    if version == 'enkf_1979_m02':
+        nc = 33749
+        nt = 13149
+        dstart = datetime(1979,1,1)
+        file_qtudo = 'QTUDO02.MGB'
+        file_qcel  = 'QITUDO02.MGB'
+
+    return (nt, nc, dstart, file_qtudo, file_qcel)
+
 
 
 
@@ -66,37 +118,6 @@ def make_dict_bho_ixc(the_dicts):
 
 
 
-#-----------------------------------------------------------------------------
-# DEFAULT FILES FOR MGB
-#-----------------------------------------------------------------------------
-def mgbsa_default(version = '1979'):
-    """ Default settings for MGB-SA """
-
-    # number of intervals and start date MGB-SA (1990->)
-    if version == '1990':
-        nc = 33749
-        nt = 7305
-        dstart = datetime(1990,1,1)
-        file_qtudo = 'QTUDO_1990.MGB'
-        file_qcel  = 'QITUDO_1990.MGB'
-
-    # number of intervals and start date MGB-SA (1979->)
-    if version == '1979':
-        nc = 33749
-        nt = 13149
-        dstart = datetime(1979,1,1)
-        file_qtudo = 'QTUDO_1979.MGB'
-        file_qcel  = 'QITUDO_1979.MGB'
-
-   # number of intervals and start date MGB-SA ENKF (1979->)
-    if version == 'enkf_1979':
-        nc = 33749
-        nt = 13149
-        dstart = datetime(1979,1,1)
-        file_qtudo = 'QTUDO_median.MGB'
-        file_qcel  = 'QITUDO_median.MGB'
-
-    return (nt, nc, dstart, file_qtudo, file_qcel)
 
 
 
@@ -119,8 +140,12 @@ def dump_mgb_binary_to_npy(filebin, fileout, nt, nc):
 
 def read_npy_as_mmap(filenpy):
     """ Read .npy binary file and make memory-map array"""
-    # make memory-map from file (doest not consume memory!)
-    dados_mmap = np.load(filenpy,mmap_mode='r')
+    #ms:2021/10/05 -> bad trick to ignore reading
+    try:
+        # make memory-map from file (doest not consume memory!)
+        dados_mmap = np.load(filenpy,mmap_mode='r')
+    except:
+        dados_mmap = None
 
     return dados_mmap
 
@@ -367,7 +392,7 @@ def f_downscaling_t2(cotrecho, dict_parameters_t2, df_flow):
 def f_downscaling_t3(cotrecho, dict_parameters_t3, df_runoff):
     """
     Downscaling function for type 3
-        (local runoff [m3/s.km2])
+        (local runoff [m3/s] in mini catchment area)
 
     Args:
         cotrecho (int)  :: target cotrecho (key in dict_parameters)
@@ -383,9 +408,9 @@ def f_downscaling_t3(cotrecho, dict_parameters_t3, df_runoff):
 
     # get parameter values
     mini = param.get('mini')                     # list
-    area_km2 = param.get('area_km2')[0]        # list -> scalar
-    aream_km2 = param.get('aream_km2')[0]        # list -> scalar
-    nuareamont = param.get('nuareamont')[0]      # list -> scalar
+    area_km2 = param.get('area_km2')[0]        # list -> scalar  #local mgb
+    aream_km2 = param.get('aream_km2')[0]        # list -> scalar #montante mgb
+    nuareamont = param.get('nuareamont')[0]      # list -> scalar #total bho
 
     # calculate
     #outflow = df_runoff[mini].values *nuareamont/aream_km2
@@ -450,6 +475,7 @@ def f_downscaling_t4(cotrecho, dict_parameters_t4, df_flow, inp_qesp=False):
         #convert m3/s to m3/s.km2 using mgb area
         fc = 1./t4_aream_km2
         fcbg = 1./aream_km2
+        #todo: maybe this is should be fcbg=1./aream_km2
 
 
     if t4_mini: #type 4
@@ -457,6 +483,7 @@ def f_downscaling_t4(cotrecho, dict_parameters_t4, df_flow, inp_qesp=False):
 
     else: # "poor man solution" (like type 3)
         outflow = df_flow[mini].values * nuareamont * fcbg
+
 
     # check output or time series
     outflow = outflow.ravel()
