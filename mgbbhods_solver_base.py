@@ -293,31 +293,34 @@ for c in list_to_downscale:
 #--------------------------------------------------------------------------
 # Export downscaled values to pickle
 #--------------------------------------------------------------------------
-with open('D_Q95.pickle','wb') as f:
-    pickle.dump(D_Q95,f)
+flag_to_pickle = False
 
-with open('D_QMLT.pickle','wb') as f:
-    pickle.dump(D_QMLT_ts,f)
+if flag_to_pickle:
+    with open('D_Q95.pickle','wb') as f:
+        pickle.dump(D_Q95,f)
 
-with open('D_Q95_ts.pickle','wb') as f:
-    pickle.dump(D_Q95_ts,f)
+    with open('D_QMLT.pickle','wb') as f:
+        pickle.dump(D_QMLT_ts,f)
 
-with open('D_QMLT_ts.pickle','wb') as f:
-    pickle.dump(D_QMLT_ts,f)
+    with open('D_Q95_ts.pickle','wb') as f:
+        pickle.dump(D_Q95_ts,f)
+
+    with open('D_QMLT_ts.pickle','wb') as f:
+        pickle.dump(D_QMLT_ts,f)
 
 
 
-with open('D_Q95e.pickle','wb') as f:
-    pickle.dump(D_Q95e,f)
+    with open('D_Q95e.pickle','wb') as f:
+        pickle.dump(D_Q95e,f)
 
-with open('D_QMLTe.pickle','wb') as f:
-    pickle.dump(D_QMLTe_ts,f)
+    with open('D_QMLTe.pickle','wb') as f:
+        pickle.dump(D_QMLTe_ts,f)
 
-with open('D_Q95e_ts.pickle','wb') as f:
-    pickle.dump(D_Q95e_ts,f)
+    with open('D_Q95e_ts.pickle','wb') as f:
+        pickle.dump(D_Q95e_ts,f)
 
-with open('D_QMLTe_ts.pickle','wb') as f:
-    pickle.dump(D_QMLTe_ts,f)
+    with open('D_QMLTe_ts.pickle','wb') as f:
+        pickle.dump(D_QMLTe_ts,f)
 
 
 #--------------------------------------------------------------------------
