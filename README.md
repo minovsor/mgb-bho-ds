@@ -1,9 +1,8 @@
-# Downscaling simulated discharges from the MGB-AS -> BHO 2017 5K
+# Post-processing of reference discharges from the MGB-AS -> BHO 2017 5K
 
 Current capabilities:
-- calculate mean discharge and Q95
-- from MGB-AS simulations
-- to ANA's Base Hidrografica Ottocodificada (BHO 2017 5K)
+- calculate mean discharge and Q95 from MGB-AS outputs
+- "downscale" to ANA's Base Hidrografica Ottocodificada (BHO 2017 5K)
 
 ## Required MGB-AS output files
 - discharge binary (e.g. "QTUDO.BIN")
