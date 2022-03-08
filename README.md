@@ -1,4 +1,4 @@
-# Post-processing of reference discharges from the MGB-AS -> BHO 2017 5K
+# Post-processing of reference discharges from MGB-AS to BHO5K (2017)
 
 Current capabilities:
 - calculate mean discharge and Q95 from MGB-AS outputs
