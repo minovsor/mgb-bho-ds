@@ -47,7 +47,7 @@ python mgbbhods_1_matlab.py
 python mgbbhods_2_main.py
 ```
 
-### 3.3 Extract discharge stats and export geopackage
+### 3.3 Run extraction of reference discharges and export geopackage
 ```bash
 python mgbbhods_solver_base.py
 ```
