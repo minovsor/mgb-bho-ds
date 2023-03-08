@@ -1,4 +1,4 @@
-# Post-processing of streamflows statistics from MGB-AS to BHO5K2017
+# Streamflows statistics postprocessing from MGB-AS to BHO5K2017
 
 Current capabilities:
 - calculate mean discharge and Q95 from MGB-AS outputs
