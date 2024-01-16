@@ -1,0 +1,43 @@
+
+
+INCLUIR NA PASTA ./input/
+
+1)
+ARQUIVO: "geoft_bho_2017_5k_trecho_drenagem.gpkg"
+DESCRIÇÃO: GEOPACKAGE DA REDE DRENAGEM NO PADRÃO DA BHO 2017 5K
+
+
+
+2)
+ARQUIVO: "mgb_sa_unit_catchments_sirgas2000.shp"
+DESCRIÇÃO: SHAPEFILE DE MINIBACIAS DO MGB (MESMA PROJ DA BHO) E PELO MENOS A COLUNA 'Mini'
+
+
+3)
+ARQUIVO: "mini.xlsx"
+DESCRIÇÃO: ARQUIVO MINI.GTP em formato xlsx, colunas no padrão:
+CatID
+Mini
+Xcen
+Ycen
+Sub	Area_(km2)
+AreaM_(km2)
+Ltr_(km)
+Str_(m/km)
+Lrl_(km)
+Srl_(m/km)
+MiniJus
+Ordem
+Hdr
+Width
+Depth
+NMAN
+BLC_01
+BLC_02
+...
+BLC_09
+
+4)
+ARQUIVOS: "QTUDO.MGB" e "QITUDO.MGB"
+DESCRICAO: ARQUIVO BINARIO DE VAZOES SIMULADAS MGB E DE VAZOES DE RUNOFF DO MGB
+** EM VERDADE, O NOME SER DEFINIDO NO SCRIPT "mgbbhods_solver_base.py"
